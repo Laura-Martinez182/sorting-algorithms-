@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
 
 
 
@@ -20,26 +22,23 @@ public class Main {
 		objWriter = new BufferedWriter(new OutputStreamWriter(System.out));
 		
         int n = Integer.parseInt(objReader.readLine());
-        System.out.println(" ");
+        
 
         for (int i=1;i<=n;i++) {
             String[] cases = objReader.readLine().split(" ");
             double[] ages = new double[cases.length];
-           
 
             for (int j=0;j < cases.length;j++) {
                 ages[j] = Double.parseDouble(cases[j]);
                 
-            }
+            	}
             
             
-            bubbleSort(ages);
- }
-
+            	bubbleSort(ages);
+        }
         
-        
-        objWriter.close();
-        objReader.close();
+		        objWriter.close();
+		        objReader.close();
 }
 
 
@@ -65,20 +64,18 @@ public class Main {
             pass++;
         }
 
-        
-        
         DecimalFormat df = new DecimalFormat("#.00");
+        df.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ENGLISH));
         objWriter.write(df.format(changes/pass)+ "-");
+        
        
         for(int c = 0; c < ages.length; c++) {
             objWriter.write(String.valueOf(ages[c]) + " ");
         }
-        objWriter.write("\n");
-        
-        objWriter.flush();
-
-        
+	        objWriter.write("\n");
+	        objWriter.flush(); 
     }
+
 }
    
 
