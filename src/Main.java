@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
@@ -64,14 +65,17 @@ public class Main {
             pass++;
         }
 
-        DecimalFormat df = new DecimalFormat("#.00");
+        DecimalFormat df = new DecimalFormat("#.0#");
         df.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ENGLISH));
+        df.setRoundingMode(RoundingMode.DOWN);
         objWriter.write(df.format(changes/pass)+ "-");
         
-       
+        String values = "";
         for(int c = 0; c < ages.length; c++) {
-            objWriter.write(String.valueOf(ages[c]) + " ");
+             values += ages[c]+ " ";
+        	
         }
+        	objWriter.write(values.trim());
 	        objWriter.write("\n");
 	        objWriter.flush(); 
     }
